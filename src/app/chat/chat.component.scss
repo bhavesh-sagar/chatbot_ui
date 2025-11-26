@@ -1,0 +1,51 @@
+.chat-container {
+  display: flex;
+  gap: 20px;
+}
+
+.conversation {
+  flex: 2;
+  padding: 15px;
+  background: var(--card);
+  border-radius: 10px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user .bubble {
+  background: #e0f7fa;
+  padding: 10px;
+  border-radius: 8px;
+  align-self: flex-end;
+}
+
+.assistant .bubble {
+  background: #ede7f6;
+  padding: 10px;
+  border-radius: 8px;
+  align-self: flex-start;
+}
+
+.system .bubble {
+  background: #fff8e1;
+  padding: 10px;
+  border-radius: 8px;
+  align-self: center;
+}
+
+.input-field {
+  width: 100%;
+}

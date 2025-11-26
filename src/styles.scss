@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+// @import 'node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+
+:root {
+  --bg: #fafafa;
+  --card: #fff;
+  --text: #222;
+}
+.dark-theme {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #eee;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+app-root { display: block; height: 100%; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

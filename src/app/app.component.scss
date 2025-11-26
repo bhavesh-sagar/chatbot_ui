@@ -1,0 +1,24 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  padding: 20px;
+}
+
+:root {
+  --bg: #fafafa;
+  --card: #fff;
+  --text: #222;
+}
+
+.dark-theme {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #eee;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
