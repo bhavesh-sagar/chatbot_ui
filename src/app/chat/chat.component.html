@@ -1,32 +1,63 @@
-<div class="chat-container">
+<div class="chat-wrapper">
 
-  <!-- LEFT PANEL -->
-  <div class="conversation">
-    <h3>Conversation</h3>
-    <div class="messages">
-      <div *ngFor="let m of messages" [ngClass]="m.role">
-        <div class="bubble">{{ m.text }}</div>
-      </div>
+  <div class="chat-header">
+    <div>
+        <div class="model-pill">GPT · RAG over PDFs</div>
+        <p class="hint-text">Your answers are grounded in uploaded documents when available.</p>
+    </div>
+    <div class="session-pill" *ngIf="session_id"> 
+        Session: {{ session_id | slice:0:8 }}…
+    </div>
+</div>
+
+<div class="chat-body" #chatBody>
+    <div *ngIf="messages.length === 0" class="empty-state">
+        <h3>Start a new conversation</h3>
+        <p>Upload a PDF or just ask a question to begin.</p>
+        <ul>
+            <li>“Summarize this document in 5 bullet points.”</li>
+            <li>“What are the key risks mentioned?”</li>
+            <li>“Explain this like I’m new to the topic.”</li>
+        </ul>
+    </div>
+
+    <div class="message-row" *ngFor="let m of messages" [ngClass]="m.role">
+        <div class="avatar" *ngIf="m.role === 'assistant'">AI</div>
+        <div class="avatar user" *ngIf="m.role === 'user'">You</div>
+
+        <div class="bubble">
+            <ng-container *ngIf="m.role === 'assistant'; else plainText">
+            <div *ngIf="!m.html">{{ m.text }}</div>
+            <div *ngIf="m.html" class="markdown" [innerHTML]="m.html"></div>
+            </ng-container>
+
+            <ng-template #plainText>
+            {{ m.text }}
+            </ng-template>
+        </div>
+    </div>
+
+    <div class="typing-indicator" *ngIf="loading">
+        <span></span><span></span><span></span>
+        <p>AI is thinking…</p>
+    </div>
+</div>
+
+  <div class="chat-footer">
+    <div class="upload-row">
+        <label class="upload-btn">
+            <input type="file" (change)="onFileSelected($event)" hidden />
+            <span>Attach PDF</span>
+        </label>
+        <span class="upload-status" *ngIf="uploading">Uploading PDF…</span>
+        <span class="upload-status ok" *ngIf="!uploading && session_id">PDF indexed ✓</span>
+    </div>
+
+    <div class="input-row">
+        <input [(ngModel)]="query" placeholder="Type your question about the document or anything else..." (keyup.enter)="sendMessage()"/>
+        <button mat-flat-button color="primary" (click)="sendMessage()">
+            Send
+        </button>
     </div>
   </div>
-
-  <!-- RIGHT PANEL -->
-  <div class="sidebar">
-    <mat-card>
-      <h4>Upload PDF</h4>
-      <input type="file" (change)="onFileSelected($event)" />
-
-      <div *ngIf="uploading">Uploading...</div>
-      <div *ngIf="session_id">Session: {{ session_id }}</div>
-    </mat-card>
-
-    <mat-form-field appearance="outline" class="input-field">
-      <input matInput [(ngModel)]="query" placeholder="Ask something..." />
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" (click)="sendMessage()">
-      Send
-    </button>
-  </div>
-
 </div>

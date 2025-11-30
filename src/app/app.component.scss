@@ -1,24 +1,139 @@
-.spacer {
-  flex: 1 1 auto;
-}
-
-.container {
-  padding: 20px;
-}
-
-:root {
-  --bg: #fafafa;
-  --card: #fff;
-  --text: #222;
-}
-
-.dark-theme {
-  --bg: #121212;
-  --card: #1e1e1e;
-  --text: #eee;
-}
-
-body {
+.app-root {
+  height: 100vh;
+  overflow: hidden;
+  padding: 24px;
+  box-sizing: border-box;
   background: var(--bg);
-  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar-left h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.topbar-left p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+.avatar-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #111827;
+  color: #f9fafb;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.user-name {
+  font-size: 13px;
+}
+
+.content-layout {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 16px;
+  min-height: 0;
+}
+
+.chat-pane {
+  flex: 1 1 auto;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  box-sizing: border-box;
+  box-shadow: 0 14px 45px rgba(15, 23, 42, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.chat-pane app-chat {
+  flex: 1 1 auto;
+  width: 100%;
+  display: block;
+}
+
+.history-pane {
+  width: 280px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.history-sub {
+  margin: 2px 0 10px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.history-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-card {
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-title {
+  font-weight: 600;
+}
+
+.history-desc {
+  color: #6b7280;
+}
+
+.history-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
 }

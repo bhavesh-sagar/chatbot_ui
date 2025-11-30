@@ -1,9 +1,43 @@
-<mat-toolbar color="primary">
-  <span>AI Chatbot</span>
-  <span class="spacer"></span>
-  <mat-slide-toggle (change)="toggle($event)">Dark</mat-slide-toggle>
-</mat-toolbar>
+<div class="app-root">
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1>AI Chatbot</h1>
+      <p>Ask questions, upload PDFs, and get contextual answers.</p>
+    </div>
+    <div class="topbar-right">
+      <mat-slide-toggle (change)="toggle($event)">Dark</mat-slide-toggle>
+      <div class="user-pill">
+        <span class="avatar-circle">BN</span>
+        <span class="user-name">Bhavesh</span>
+      </div>
+    </div>
+  </header>
+  
+  <section class="content-layout">
+    <section class="chat-pane">
+      <app-chat></app-chat>
+    </section>
 
-<div class="container">
-  <app-chat></app-chat>
+    <aside class="history-pane">
+      <h3>Chat history</h3>
+      <p class="history-sub">Recently active sessions</p>
+
+      <div class="history-list">
+        <div class="history-card" *ngFor="let h of [1,2,3,4,5]">
+          <div class="history-title">Session {{ h }}</div>
+          <div class="history-desc">
+            In publishing and design, this is placeholder text commonly used…
+          </div>
+          <div class="history-actions">
+            <button mat-icon-button>
+              <span class="material-icons">edit</span>
+            </button>
+            <button mat-icon-button>
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
 </div>
